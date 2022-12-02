@@ -1,3 +1,10 @@
-"""Forms of the project."""
+from django import forms
+from .models import Thing
+from django.core.validators import RegexValidator
 
-# Create your forms here.
+
+class ThingForm(forms.ModelForm):
+    class Meta:
+        name = forms.CharField(label='Name')
+        description = forms.Textarea(label = 'Description')
+        quantity = forms.NumberInput(lable = 'Quantity')
