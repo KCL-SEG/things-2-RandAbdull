@@ -1,10 +1,11 @@
-from django import forms
-from .models import Thing
-from django.core.validators import RegexValidator
 
+from .models import Thing
+from django import forms
 
 class ThingForm(forms.ModelForm):
     class Meta:
-        name = forms.CharField(label='Name')
-        description = forms.Textarea(label = 'Description')
-        quantity = forms.NumberInput(lable = 'Quantity')
+        model = Thing
+        fields = ['name', 'description', 'quantity']
+        widgets = {'description': forms.Textarea(), 'quantity': forms.NumberInput()}
+
+
